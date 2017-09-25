@@ -13,8 +13,8 @@ const SearchStringParser = require('search-string-parser')
 const parser = new SearchStringParser()
 
 const searchStrings = parser.parse('foo bar:baz')
-const searchStringFoo = searchString.get(0)
-const searchStringBar = searchString.get(1)
+const searchStringFoo = searchStrings.get(0)
+const searchStringBar = searchStrings.get(1)
 
 console.log(searchStringFoo.field)    // null
 console.log(searchStringFoo.value)    // foo
@@ -40,8 +40,8 @@ const SearchStringParser = require('search-string-parser')
 const parser = new SearchStringParser()
 
 parser.parseAsync('foo OR bar:"ba  z"').then(searchStrings => {
-  const searchStringFoo = searchString.first()
-  const searchStringBar = searchString.last(1)
+  const searchStringFoo = searchStrings.first()
+  const searchStringBar = searchStrings.last(1)
 
   console.log(searchStringFoo.field)    // null
   console.log(searchStringFoo.value)    // foo

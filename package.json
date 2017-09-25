@@ -1,6 +1,6 @@
 {
   "name": "search-string-parser",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "検索文字列の解析",
   "main": "lib/search-string-parser.js",
   "scripts": {

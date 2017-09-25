@@ -1,0 +1,32 @@
+{
+  "name": "search-string-parser",
+  "version": "0.0.0",
+  "description": "検索文字列の解析",
+  "main": "lib/search-string-parser.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junpei/search-string-parser.git"
+  },
+  "keywords": [
+    "search",
+    "string",
+    "parser",
+    "elasticsearch",
+    "lucene"
+  ],
+  "author": "KITA, Junpei",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/junpei/search-string-parser/issues"
+  },
+  "homepage": "https://github.com/junpei/search-string-parser#readme",
+  "devDependencies": {
+    "jest": "^21.1.0"
+  },
+  "dependencies": {
+    "local-scope": "^1.2.0"
+  }
+}

@@ -1,6 +1,18 @@
 const SearchString = require('../lib/search-string.js')
 
 describe('search-string', () => {
+  const toStringTest = (noOperator = false) => testObject => {
+    describe('noOperator = ' + noOperator, () => {
+      for (const expectedValue of Object.keys(testObject)) {
+        const testArgs = testObject[expectedValue]
+        it(
+          JSON.stringify(testArgs),
+          () => expect(new SearchString(testArgs).toString(noOperator)).toEqual(expectedValue)
+        )
+      }
+    })
+  }
+
   describe('default', () => {
     const instance = new SearchString({ value: 'is default' })
     it('instanceOf', () => expect(instance).toBeInstanceOf(SearchString))
@@ -11,6 +23,28 @@ describe('search-string', () => {
     it('and', () => expect(instance.and).toBeTruthy())
     it('or', () => expect(instance.or).toBeFalsy())
     it('not', () => expect(instance.not).toBeFalsy())
+
+    describe('toString', () => {
+      it('is Function', () => expect(instance.toString).toBeInstanceOf(Function))
+
+      toStringTest()({
+        'foo':         { value: 'foo' },
+        'foo:bar':     { field: 'foo', value: 'bar', operator: 'and' },
+        '"foo: ba r"': { value: 'foo: ba r', inQuotes: true },
+        'foo':         { value: 'foo', operator: 'and' },
+        'OR foo':      { value: 'foo', operator: 'or' },
+        'NOT foo':     { value: 'foo', operator: 'not' },
+      })
+
+      toStringTest(true)({
+        'foo':         { value: 'foo' },
+        'foo:bar':     { field: 'foo', value: 'bar', operator: 'and' },
+        '"foo: ba r"': { value: 'foo: ba r', inQuotes: true },
+        'foo1':        { value: 'foo1', operator: 'and' },
+        'foo2':        { value: 'foo2', operator: 'or' },
+        'foo3':        { value: 'foo3', operator: 'not' },
+      })
+    })
   })
 
   describe('Or', () => {

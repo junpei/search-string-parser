@@ -212,7 +212,7 @@ describe('search-string-value-parser', () => {
     "　'foo'": null,
   })
 
-  patternMatchTest('duableQuotesPattern')({
+  patternMatchTest('doubleQuotesPattern')({
     '"foo"': "foo",
     '"f oo"': "f oo",
     '"fo o"': "fo o",

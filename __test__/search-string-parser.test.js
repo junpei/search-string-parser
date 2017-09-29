@@ -1,5 +1,6 @@
+const immutable = require('immutable')
+
 const SearchString = require('../lib/search-string')
-const SearchStrings = require('../lib/search-strings')
 const SearchStringParser = require('../lib/search-string-parser')
 
 describe('search-string-value-parser', () => {
@@ -36,11 +37,11 @@ describe('search-string-value-parser', () => {
   const makeSearchStrings = (...sources) => {
     return sources.reduce((searchStrings, source) => {
       return searchStrings.push(
-        source instanceof SearchStrings
+        immutable.List.isList(source)
           ? source
           : new SearchString[source[0]](source[1])
       )
-    }, new SearchStrings())
+    }, immutable.List())
   }
   const mixedString = 'foo \'bar\' AND "baz" OR qux | quux NOT alpha -bravo charlie:delta ("echo" AND foxtrot OR (golf \'hotel\') -india)'
   const mixedReturn = makeSearchStrings(
@@ -233,12 +234,12 @@ describe('search-string-value-parser', () => {
 
   describe('parse()', () => {
     it('is Function', () => expect(parser.parse).toBeInstanceOf(Function))
-    it('return is SearchStrings', () => expect(parser.parse()).toBeInstanceOf(SearchStrings))
+    it('return is immutable.List', () => expect(parser.parse()).toBeInstanceOf(immutable.List))
 
     describe('string', () => {
-      it('none', () => expect(parser.parse()).toBeInstanceOf(SearchStrings))
-      it('null', () => expect(parser.parse(null)).toBeInstanceOf(SearchStrings))
-      it('undefined', () => expect(parser.parse(undefined)).toBeInstanceOf(SearchStrings))
+      it('none', () => expect(parser.parse()).toBeInstanceOf(immutable.List))
+      it('null', () => expect(parser.parse(null)).toBeInstanceOf(immutable.List))
+      it('undefined', () => expect(parser.parse(undefined)).toBeInstanceOf(immutable.List))
 
       parseTest({
         'foo bar': makeSearchStrings(['Word', 'foo'], ['Word', 'bar']),
@@ -276,9 +277,9 @@ describe('search-string-value-parser', () => {
     it('return is Promise', () => expect(parser.parseAsync()).toBeInstanceOf(Promise))
 
     describe('string', () => {
-      it('none', () => expect(parser.parseAsync()).resolves.toBeInstanceOf(SearchStrings))
-      it('null', () => expect(parser.parseAsync(null)).resolves.toBeInstanceOf(SearchStrings))
-      it('undefined', () => expect(parser.parseAsync(undefined)).resolves.toBeInstanceOf(SearchStrings))
+      it('none', () => expect(parser.parseAsync()).resolves.toBeInstanceOf(immutable.List))
+      it('null', () => expect(parser.parseAsync(null)).resolves.toBeInstanceOf(immutable.List))
+      it('undefined', () => expect(parser.parseAsync(undefined)).resolves.toBeInstanceOf(immutable.List))
 
       parseTestAsync({
         'foo bar': makeSearchStrings(['Word', 'foo'], ['Word', 'bar']),

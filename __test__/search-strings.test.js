@@ -13,18 +13,14 @@ describe('search-strings', () => {
     describe('argument', () => {
       it('none', () => expect(values.push()).toBeInstanceOf(SearchStrings))
       it('{}', () => expect(values.push({})).toBeInstanceOf(SearchStrings))
-      it('{ field: "foo" }', () => expect(values.push({ field: 'foo' })).toBeInstanceOf(SearchStrings))
-      it('{ value: "foo" }', () => expect(values.push({ value: 'foo' })).toBeInstanceOf(SearchStrings))
-      it('{ inQuotes: true }', () => expect(values.push({ inQuotes: true })).toBeInstanceOf(SearchStrings))
-      it('{ operator: "or" }', () => expect(values.push({ operator: 'or' })).toBeInstanceOf(SearchStrings))
     })
   })
 
   describe('get()', () => {
     const values = (new SearchStrings())
-    .push({ value: 'first()' })
-    .push({ value: 'next()' })
-    .push({ value: 'second()' })
+    .push(new SearchString({ value: 'first()' }))
+    .push(new SearchString({ value: 'next()' }))
+    .push(new SearchString({ value: 'second()' }))
     it('is Function', () => expect(values.get).toBeInstanceOf(Function))
     it('return is SearchString', () => expect(values.get()).toEqual(new SearchString({ value: 'first()' })))
 
@@ -35,13 +31,16 @@ describe('search-strings', () => {
   })
 
   describe('first()', () => {
-    const values = (new SearchStrings()).push({ value: 'first()' }).push({ value: 'next()' })
+    const values = (new SearchStrings())
+    .push(new SearchString({ value: 'first()' }))
+    .push(new SearchString({ value: 'next()' }))
     it('is Function', () => expect(values.first).toBeInstanceOf(Function))
     it('return is SearchString', () => expect(values.first()).toEqual(new SearchString({ value: 'first()' })))
   })
 
   describe('last()', () => {
-    const values = (new SearchStrings()).push({ value: 'last()' })
+    const values = (new SearchStrings())
+    .push(new SearchString({ value: 'last()' }))
     it('is Function', () => expect(values.last).toBeInstanceOf(Function))
     it('return is SearchString', () => expect(values.last()).toEqual(new SearchString({ value: 'last()' })))
   })

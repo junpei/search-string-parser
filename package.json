@@ -1,6 +1,6 @@
 {
   "name": "search-string-parser",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "検索文字列の解析",
   "main": "lib/search-string-parser.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "jest": "^21.1.0"
   },
   "dependencies": {
+    "immutable": "^3.8.1",
     "local-scope": "^1.2.0"
   }
 }

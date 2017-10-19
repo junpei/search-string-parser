@@ -1,4 +1,5 @@
 const immutable = require('immutable')
+const Promise = require('bluebird')
 
 const SearchString = require('../lib/search-string')
 const SearchStringParser = require('../lib/search-string-parser')

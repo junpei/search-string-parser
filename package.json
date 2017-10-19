@@ -1,6 +1,6 @@
 {
   "name": "search-string-parser",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "検索文字列の解析",
   "main": "lib/search-string-parser.js",
   "scripts": {
@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "immutable": "^3.8.1",
-    "local-scope": "^1.2.0"
+    "immutable": "^3.8.1"
   }
 }

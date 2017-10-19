@@ -28,7 +28,6 @@
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "immutable": "^3.8.1",
-    "local-scope": "^1.2.0"
+    "immutable": "^3.8.1"
   }
 }

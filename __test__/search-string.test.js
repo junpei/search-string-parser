@@ -53,9 +53,9 @@ describe('search-string', () => {
     it('field', () => expect(instance.field).toBeNull())
     it('value', () => expect(instance.value).toBe('is or'))
     it('inQuotes', () => expect(instance.inQuotes).toBeFalsy())
-    it('operator', () => expect(instance.operator).toBe('and'))
-    it('and', () => expect(instance.and).toBeTruthy())
-    it('or', () => expect(instance.or).toBeFalsy())
+    it('operator', () => expect(instance.operator).toBe('or'))
+    it('and', () => expect(instance.and).toBeFalsy())
+    it('or', () => expect(instance.or).toBeTruthy())
     it('not', () => expect(instance.not).toBeFalsy())
   })
 
@@ -77,10 +77,10 @@ describe('search-string', () => {
     it('field', () => expect(instance.field).toBe('set field'))
     it('value', () => expect(instance.value).toBe('is not'))
     it('inQuotes', () => expect(instance.inQuotes).toBeFalsy())
-    it('operator', () => expect(instance.operator).toBe('and'))
-    it('and', () => expect(instance.and).toBeTruthy())
+    it('operator', () => expect(instance.operator).toBe('not'))
+    it('and', () => expect(instance.and).toBeFalsy())
     it('or', () => expect(instance.or).toBeFalsy())
-    it('not', () => expect(instance.not).toBeFalsy())
+    it('not', () => expect(instance.not).toBeTruthy())
   })
 
   describe('Word', () => {
@@ -101,9 +101,9 @@ describe('search-string', () => {
     it('field', () => expect(instance.field).toBeNull())
     it('value', () => expect(instance.value).toBeNull())
     it('inQuotes', () => expect(instance.inQuotes).toBeFalsy())
-    it('operator', () => expect(instance.operator).toBe('and'))
-    it('and', () => expect(instance.and).toBeTruthy())
-    it('or', () => expect(instance.or).toBeFalsy())
+    it('operator', () => expect(instance.operator).toBe('or'))
+    it('and', () => expect(instance.and).toBeFalsy())
+    it('or', () => expect(instance.or).toBeTruthy())
     it('not', () => expect(instance.not).toBeFalsy())
   })
 
@@ -113,10 +113,10 @@ describe('search-string', () => {
     it('field', () => expect(instance.field).toBeNull())
     it('value', () => expect(instance.value).toBeNull())
     it('inQuotes', () => expect(instance.inQuotes).toBeFalsy())
-    it('operator', () => expect(instance.operator).toBe('and'))
-    it('and', () => expect(instance.and).toBeTruthy())
+    it('operator', () => expect(instance.operator).toBe('not'))
+    it('and', () => expect(instance.and).toBeFalsy())
     it('or', () => expect(instance.or).toBeFalsy())
-    it('not', () => expect(instance.not).toBeFalsy())
+    it('not', () => expect(instance.not).toBeTruthy())
   })
 
   describe('Field', () => {
